@@ -39,7 +39,7 @@
 //            $query = mysqli_query($con,$sql);
 
             if(mysqli_query($con,$sql)){
-                header("location:create.php");
+                header("location:read.php");
             }else{
                 echo "db input fail";
 
@@ -69,6 +69,7 @@
         <div class="form-group">
 
             <button type="submit" name="create" value="add">Add Contact</button>
+            <a href="read.php">All Contact</a>
         </div>
 
     </fieldset>

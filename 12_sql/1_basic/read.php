@@ -15,10 +15,32 @@
             border-collapse: collapse;
             padding: 10px 15px;
         }
+        .btn-del{
+            background: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.25rem;
+            padding: 5px 15px;
+        }
+        .btn-update{
+            background: orange;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.25rem;
+            padding: 5px 15px;
+        }
     </style>
 </head>
 <body>
+<?php
 
+    $con = mysqli_connect("localhost","root","","weekday_sql");
+    $sql = "SELECT * FROM contacts";
+    $query = mysqli_query($con,$sql);
+
+
+?>
+<a href="create.php">Add New Contact</a>
 <table>
     <thead>
     <tr>
@@ -30,116 +52,21 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>1</td>
-        <td>Hein Htet Zan</td>
-        <td>09623832848</td>
-        <td>
 
-        </td>
-        <td>
-            12 June 2020
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Hein Htet Zan</td>
-        <td>09623832848</td>
-        <td>
 
-        </td>
-        <td>
-            12 June 2020
-        </td>
-    </tr>
+    <?php while($row = mysqli_fetch_assoc($query)){ ?>
     <tr>
-        <td>1</td>
-        <td>Hein Htet Zan</td>
-        <td>09623832848</td>
+        <td><?php echo $row['id']; ?></td>
+        <td><?php echo $row['name'] ?></td>
+        <td><?php echo $row["phone"] ?></td>
         <td>
-
+            <a href="delete.php?id=<?php echo $row['id'];?>" onclick="return confirm('Are U Sure To Delete <?php echo $row['name'] ?>')" class="btn-del">delete</a>
+            <a href="update.php?id=<?php echo $row['id'];?>" class="btn-update">update</a>
         </td>
-        <td>
-            12 June 2020
-        </td>
+        <td><?php echo $row['created_at'] ?></td>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>Hein Htet Zan</td>
-        <td>09623832848</td>
-        <td>
+    <?php } ?>
 
-        </td>
-        <td>
-            12 June 2020
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Hein Htet Zan</td>
-        <td>09623832848</td>
-        <td>
-
-        </td>
-        <td>
-            12 June 2020
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Hein Htet Zan</td>
-        <td>09623832848</td>
-        <td>
-
-        </td>
-        <td>
-            12 June 2020
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Hein Htet Zan</td>
-        <td>09623832848</td>
-        <td>
-
-        </td>
-        <td>
-            12 June 2020
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Hein Htet Zan</td>
-        <td>09623832848</td>
-        <td>
-
-        </td>
-        <td>
-            12 June 2020
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Hein Htet Zan</td>
-        <td>09623832848</td>
-        <td>
-
-        </td>
-        <td>
-            12 June 2020
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Hein Htet Zan</td>
-        <td>09623832848</td>
-        <td>
-
-        </td>
-        <td>
-            12 June 2020
-        </td>
-    </tr>
     </tbody>
 </table>
 
