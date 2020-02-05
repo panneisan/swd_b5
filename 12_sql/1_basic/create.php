@@ -32,18 +32,28 @@
         //mysql connection
         $con = mysqli_connect("localhost","root","","weekday_sql");
 
-        if($name && $phone){
+        if(preg_match("/^[0-9]*$/",$phone)){
 
-            $sql = "INSERT INTO contacts (name,phone) VALUES ('$name','$phone')";
+            if($name && $phone){
+
+                $sql = "INSERT INTO contacts (name,phone) VALUES ('$name','$phone')";
 
 //            $query = mysqli_query($con,$sql);
 
-            if(mysqli_query($con,$sql)){
-                header("location:read.php");
-            }else{
-                echo "db input fail";
+                if(mysqli_query($con,$sql)){
+                    header("location:read.php");
+                }else{
+                    echo "db input fail";
 
-            }
+                }
+
+
+
+            }else{
+
+            return "phone must be number";
+
+        }
 
 
         }
@@ -52,10 +62,14 @@
 
 ?>
 </pre>
-<form action="" method="get">
+
+<a href="connection.php" target="_parent"></a>
+
+<form action="" method="get" enctype="multipart/form-data">
 
     <fieldset>
         <legend>Contact Create Form</legend>
+
         <div class="form-group">
             <lable>Name</lable>
             <br>
