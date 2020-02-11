@@ -6,7 +6,25 @@
             <div class="border border-faded p-3 rounded shadow-sm">
                 <h4 class="text-primary">User Login</h4>
                 <hr>
-                <form action="">
+
+                <?php
+
+                if(isset($_SESSION['regStatus'])){
+                    if($_SESSION['regStatus'] == "success"){
+                        echo showError("success","Register Successfully");
+                    }
+                    $_SESSION['regStatus'] = "";
+                }
+
+                if(isset($_POST['login'])){
+
+                    echo userLogin();
+
+                }
+
+                ?>
+
+                <form method="post">
                     <div class="form-group">
                         <label for=""> <i class="fa fa-user-circle text-primary"></i> Login Email</label>
                         <input type="email" name="userEmail" class="form-control" required>
@@ -18,7 +36,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" name="login">
                             <i class="fa fa-unlock"></i>
                             Login
                         </button>

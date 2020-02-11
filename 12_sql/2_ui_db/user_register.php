@@ -8,10 +8,14 @@
                 <hr>
                 <?php
 
+                    if(isset($_POST['reg'])){
 
+                        echo userRegister();
+
+                    }
 
                 ?>
-                <form action="">
+                <form method="post">
                     <div class="form-group">
                         <label for=""> <i class="fa fa-user-circle text-primary"></i> User Name</label>
                         <input type="text" name="userName" class="form-control" required>

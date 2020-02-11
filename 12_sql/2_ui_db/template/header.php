@@ -1,4 +1,5 @@
 <?php include "core/conn.php";?>
+<?php session_start(); ?>
 <?php include "core/functions.php";?>
 <!doctype html>
 <html lang="en">
