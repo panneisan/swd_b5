@@ -1,4 +1,4 @@
-<?php include "core/conn.php";?>
+<?php include "core/base.php";?>
 <?php session_start(); ?>
 <?php include "core/functions.php";?>
 <!doctype html>

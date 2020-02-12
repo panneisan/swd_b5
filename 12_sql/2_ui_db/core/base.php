@@ -17,3 +17,7 @@ function assets($url){
     echo URL."/assets/".$url;
 }
 
+$role = array("1"=>"Admin","2"=>"user");
+
+
+

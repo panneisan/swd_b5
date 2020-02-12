@@ -18,9 +18,25 @@
 
                         ?>
                         <form method="post">
-                            <div class="form-group">
-                                <label for="">Post Title</label>
-                                <input type="text" class="form-control" name="postTitle" required>
+                            <div class="row">
+                                <div class="col-12 col-md-8">
+                                    <div class="form-group">
+                                        <label for="">Post Title</label>
+                                        <input type="text" class="form-control" name="postTitle" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Post Category</label>
+                                        <select name="postCategory" id="" class="form-control">
+                                            <?php foreach (categories() as $c){ ?>
+                                                <option value="<?php echo $c['id']; ?>">
+                                                    <?php echo $c['title']; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Post Description</label>

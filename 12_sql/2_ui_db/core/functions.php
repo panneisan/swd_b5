@@ -21,6 +21,15 @@ function first($sql){
     return mysqli_fetch_assoc(runQuery($sql));
 }
 
+function get($sql){
+    $data = [];
+    $query = mysqli_query(con(),$sql);
+    while ($row = mysqli_fetch_assoc($query)){
+        array_push($data,$row);
+    }
+    return $data;
+}
+
 
 //common function end
 
@@ -100,12 +109,26 @@ function userLogin(){
 
 //user function end
 
+//category function start
+
+function category($id){
+
+}
+function categories($condition = 1){
+
+    $sql = "SELECT * FROM categories WHERE $condition";
+    return get($sql);
+}
+
+//category function end
+
 //post function start
 
 function postCreate(){
 
     $postTitle = textFilter($_POST['postTitle']);
     $postDescription = textFilter($_POST['postDescription']);
+    $postCategory = textFilter($_POST['postCategory']);
     $userId = $_SESSION['user']['id'];
 
     if(empty($postTitle) || empty($postDescription)){
@@ -114,7 +137,7 @@ function postCreate(){
 
     }else{
 
-        $sql = "INSERT INTO posts (title,description,user_id) VALUES ('$postTitle','$postDescription','$userId')";
+        $sql = "INSERT INTO posts (title,description,category_id,user_id) VALUES ('$postTitle','$postDescription','$postCategory','$userId')";
 
 
         if(runQuery($sql)){
@@ -132,4 +155,4 @@ function postCreate(){
 
 }
 
-////post function end
+//post function end
