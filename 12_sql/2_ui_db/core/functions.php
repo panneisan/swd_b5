@@ -88,7 +88,7 @@ function userLogin(){
             }else{
 
                 $_SESSION['user'] = $info;
-                header("location:dashboard.php");
+                header("location:panel_dashboard.php");
 
             }
 

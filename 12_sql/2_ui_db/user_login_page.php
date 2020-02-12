@@ -1,4 +1,11 @@
-<?php include 'template/header.php'; ?>
+<?php
+
+    include 'template/header.php';
+    if(isset($_SESSION['user']['id'])){
+        session_unset();
+        session_destroy();
+    }
+?>
 
 <div class="container">
     <div class="row align-items-center justify-content-center min-vh-100">
