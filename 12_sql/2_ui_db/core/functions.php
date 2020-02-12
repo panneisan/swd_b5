@@ -33,7 +33,7 @@ function userRegister(){
     $userPassword = textFilter($_POST['userPassword']);
     $userPasswordConfirmation = textFilter($_POST['userPasswordConfirmation']);
 
-    if(empty($userName) && empty($userEmail) && empty($userPassword) && empty($userPasswordConfirmation)){
+    if(empty($userName) || empty($userEmail) || empty($userPassword) || empty($userPasswordConfirmation)){
 
         return showError("danger","အကုန်ဖြည့်ရမည် <i class='fa fa-frown-o'></i>");
 
@@ -99,3 +99,37 @@ function userLogin(){
 }
 
 //user function end
+
+//post function start
+
+function postCreate(){
+
+    $postTitle = textFilter($_POST['postTitle']);
+    $postDescription = textFilter($_POST['postDescription']);
+    $userId = $_SESSION['user']['id'];
+
+    if(empty($postTitle) || empty($postDescription)){
+
+        return showError("danger","Title နှင့် Description များပါဝင်ရန်လိုအပ်ပါသည်။ <i class='fa fa-frown-o'></i>");
+
+    }else{
+
+        $sql = "INSERT INTO posts (title,description,user_id) VALUES ('$postTitle','$postDescription','$userId')";
+
+
+        if(runQuery($sql)){
+
+            return showError("success","Post တင်ခြင်းအောင်မြင်ပါသည်။ ");
+
+        }else{
+
+            return showError("danger","db input error");
+            echo mysqli_error(con());
+
+        }
+
+    }
+
+}
+
+////post function end
