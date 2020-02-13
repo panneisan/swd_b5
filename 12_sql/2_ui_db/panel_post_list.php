@@ -64,7 +64,7 @@
                                                         <i class="fa fa-trash-o fa-fw text-danger"></i>
                                                         Delete
                                                     </a>
-                                                    <a class="dropdown-item" href="panel_post_update.php">
+                                                    <a class="dropdown-item" href="panel_post_update.php?id=<?php echo $p['id']?>">
                                                         <i class="fa fa-edit fa-fw text-warning"></i>
                                                         Edit
                                                     </a>

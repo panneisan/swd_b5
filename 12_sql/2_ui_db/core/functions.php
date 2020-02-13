@@ -37,7 +37,19 @@ function get($sql){
     }
     return $data;
 }
+function isAdmin(){
+    if($_SESSION['user']['role'] == 1){
+        return true;
+    }
+    return false;
+}
 
+function isUser(){
+    if($_SESSION['user']['role'] == 2){
+        return true;
+    }
+    return false;
+}
 
 //common function end
 
@@ -143,12 +155,17 @@ function categories($condition = 1){
 
 //post function start
 
-function post(){
-
+function post($id){
+    $sql = "SELECT * FROM posts WHERE id='$id'";
+    return first($sql);
 }
 
 function posts($condition = 1){
-    $sql = "SELECT * FROM posts WHERE $condition";
+    if(isAdmin()){
+        $sql = "SELECT * FROM posts WHERE $condition";
+    }else if(isUser()){
+        $sql = "SELECT * FROM posts WHERE $condition AND user_id = '{$_SESSION['user']['id']}'";
+    }
     return get($sql);
 }
 
@@ -167,6 +184,36 @@ function postCreate(){
 
         $sql = "INSERT INTO posts (title,description,category_id,user_id) VALUES ('$postTitle','$postDescription','$postCategory','$userId')";
 
+        if(runQuery($sql)){
+
+            return showError("success","Post တင်ခြင်းအောင်မြင်ပါသည်။ ");
+
+        }else{
+
+            return showError("danger","db input error");
+
+            echo mysqli_error(con());
+
+        }
+
+    }
+
+}
+
+function postUpdate($id){
+
+    $postTitle = textFilter($_POST['postTitle']);
+    $postDescription = textFilter($_POST['postDescription']);
+    $postCategory = textFilter($_POST['postCategory']);
+    $userId = $_SESSION['user']['id'];
+
+    if(empty($postTitle) || empty($postDescription)){
+
+        return showError("danger","Title နှင့် Description များပါဝင်ရန်လိုအပ်ပါသည်။ <i class='fa fa-frown-o'></i>");
+
+    }else{
+
+        $sql = "UPDATE posts SET title='$postTitle',description='$postDescription',category_id='$postCategory' WHERE id='$id'";
 
         if(runQuery($sql)){
 
@@ -175,12 +222,32 @@ function postCreate(){
         }else{
 
             return showError("danger","db input error");
+
             echo mysqli_error(con());
 
         }
 
     }
+}
 
+function postDelete($id){
+
+    if(isUser()){
+        $currentUserId = $_SESSION['user']['id'];
+        $postUserId = post($id)['user_id'];
+        if($currentUserId != $postUserId){
+            echo showError("danger","Permission Denied");
+            die();
+        }else{
+            $sql = "DELETE FROM posts WHERE id='$id' AND user_id='{$_SESSION['user']['id']}'";
+        }
+    }
+
+    if(isAdmin()){
+        $sql = "DELETE FROM posts WHERE id='$id'";
+    }
+
+    return runQuery($sql);
 }
 
 //post function end
