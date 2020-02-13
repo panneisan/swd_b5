@@ -13,6 +13,14 @@ function showError($color="primary",$message="Something Wrongs"){
     return "<p class='alert alert-$color'>$message</p>";
 }
 
+function shortText($text,$length=100){
+    $output = substr($text,0,$length);
+    if(strlen($text) <= $length){
+        return $output;
+    }
+    return $output." ....";
+}
+
 function runQuery($sql){
     return mysqli_query(con(),$sql);
 }
@@ -35,6 +43,15 @@ function get($sql){
 
 
 //user function start
+
+function user($id){
+    $sql = "SELECT * FROM users WHERE id='$id'";
+    return first($sql);
+}
+
+function users(){
+
+}
 
 function userRegister(){
     $userName = textFilter($_POST['userName']);
@@ -112,8 +129,10 @@ function userLogin(){
 //category function start
 
 function category($id){
-
+    $sql = "SELECT * FROM categories WHERE id='$id'";
+    return first($sql);
 }
+
 function categories($condition = 1){
 
     $sql = "SELECT * FROM categories WHERE $condition";

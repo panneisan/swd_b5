@@ -13,7 +13,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="panel_post_create.php">Add Post</a>
-                    <a class="dropdown-item" href="#">Post List</a>
+                    <a class="dropdown-item" href="panel_post_list.php">Post List</a>
                 </div>
             </li>
 
