@@ -8,7 +8,18 @@
             <div class="">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="text-primary text-uppercase">Add New Post</h4>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="text-primary text-uppercase">
+                                <i class="fa fa-plus-circle"></i>
+                                Add New Post
+                            </h4>
+                            <div>
+                                <a href="panel_post_list.php" class="btn btn-outline-primary">
+                                    <i class="fa fa-list"></i>
+                                    Post List
+                                </a>
+                            </div>
+                        </div>
                         <hr>
                         <?php
 

@@ -124,6 +124,15 @@ function categories($condition = 1){
 
 //post function start
 
+function post(){
+
+}
+
+function posts($condition = 1){
+    $sql = "SELECT * FROM posts WHERE $condition";
+    return get($sql);
+}
+
 function postCreate(){
 
     $postTitle = textFilter($_POST['postTitle']);
