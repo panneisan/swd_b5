@@ -251,3 +251,13 @@ function postDelete($id){
 }
 
 //post function end
+
+
+//home function start
+
+function getPost($condition=1,$limit=10){
+    $sql = "SELECT * FROM posts WHERE $condition LIMIT $limit";
+    return get($sql);
+}
+
+//home function end

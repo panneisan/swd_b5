@@ -34,7 +34,7 @@
 
                         ?>
 
-                            <table class="table mb-0">
+                            <table class="table mb-0" id="post-list">
                                 <thead>
                                 <tr>
                                     <th>No</th>
@@ -122,6 +122,8 @@
         $("#delLink").attr("href",$delUrl);
         $(".modal").modal("show");
     });
+
+    $('#post-list').DataTable();
 </script>
 
 

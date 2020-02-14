@@ -11,6 +11,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="<?php assets('css/bootstrap.css') ?>">
     <link rel="stylesheet" href="<?php assets('css/font-awesome.css') ?>">
+    <link rel="stylesheet" href="<?php assets('data_table/dataTables.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?php assets('css/style.css') ?>">
 </head>
 <body>

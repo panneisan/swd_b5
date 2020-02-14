@@ -46,6 +46,10 @@
                             Login Account
                         </a>
                     </div>
+                    <a href="index.php">
+                        <i class="fa fa-home"></i>
+                        Go Back To Home
+                    </a>
                 </form>
             </div>
         </div>
