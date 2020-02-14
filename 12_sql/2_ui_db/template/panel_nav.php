@@ -12,7 +12,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link text-uppercase dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Post
+                                Post Menu
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="panel_post_create.php">Add Post</a>
@@ -23,6 +23,10 @@
 
                     </ul>
                     <div>
+                        <a href="index.php" class="btn btn-light text-uppercase text-primary">
+                            <i class="fa fa-home"></i>
+                            Home
+                        </a>
                         <a href="user_login_page.php" class="btn btn-light text-uppercase text-primary">
                             <i class="fa fa-unlock"></i>
                             Logout
