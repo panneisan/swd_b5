@@ -24,6 +24,7 @@
                         <p>
                             <?php echo $p['description']; ?>
                         </p>
+                        <p> like <?php echo likeCount($p['id']); ?> </p>
                         <div class="d-flex justify-content-between">
                             <a href="index.php">Read All</a>
                             <span>

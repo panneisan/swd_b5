@@ -238,16 +238,15 @@ function software($id){
 }
 
 function softwares($condition=1){
-    if (isAdmin()){
+
 
         $sql = "SELECT * FROM software WHERE '$condition'";
 
-    }
     return get($sql);
 }
 function softwareCreate(){
 
-    if (!isUser()) {
+
         $softwareTitle = textFilter($_POST['softwareTitle']);
         $softwareDescription = textFilter($_POST['softwareDescription']);
         $softwarePrice = textFilter($_POST['softwarePrice']);
@@ -269,17 +268,14 @@ function softwareCreate(){
                 echo mysqli_error(con());
 
             }
+
         }
 
-    }else {
-        return showError("warning","Permission Deny");
-
-    }
 }
 
 function softwareUpdate($id){
 
-    if (!isUser()){
+
         $softwareTitle = textFilter($_POST['softwareTitle']);
         $softwareDescription = textFilter($_POST['softwareDescription']);
         $softwarePrice = textFilter($_POST['softwarePrice']);
@@ -288,40 +284,38 @@ function softwareUpdate($id){
         if (empty($softwareTitle) || empty($softwareDescription || empty($softwarePrice))){
 
             return showError("warning","Post Empty");
-        }else{
+        }else {
 
             $sql = "UPDATE software SET title='$softwareTitle',description='$softwareDescription',price='$softwarePrice' WHERE id='$id'";
 
-            if (runQuery($sql)){
+            if (runQuery($sql)) {
 
-                return showError("success","software success");
-            }else{
+                return showError("success", "software success");
+            } else {
 
-                return showError("danger","software fail");
+                return showError("danger", "software fail");
                 echo mysqli_error(con());
 
             }
         }
-    }else{
-        return showError("warning","Permission Deny");
 
-    }
 }
 
 function softwareDelete($id){
 
-    if (isAdmin()){
+
 
         $sql ="DELETE FROM software WHERE id='$id'";
 
-    }
-    if (isUser()){
-        showError("danger","Permission Deny");
-        die();
-    }
+
     return runQuery($sql);
 }
 
+function softwareAccept($id){
+    $sql = "UPDATE software SET status = '1' WHERE id='$id'";
+//    die($sql);
+    return runQuery($sql);
+}
 
 //software function end
 
@@ -543,7 +537,8 @@ function getPost($condition=1,$limit=10){
     return get($sql);
 }
 function getSoftware($condition =1){
-    $sql = "SELECT * FROM software WHERE '$condition'";
+    $sql = "SELECT * FROM software WHERE $condition";
+//    die($sql);
     return get($sql);
 }
 

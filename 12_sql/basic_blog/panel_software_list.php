@@ -39,6 +39,9 @@
                                 <th>Title</th>
                                 <th>Price</th>
                                 <th>Control</th>
+                                <?php if(isAdmin()){ ?>
+                                    <th>Accept</th>
+                                <?php } ?>
                                 <th>Created Time</th>
                             </tr>
                             </thead>
@@ -67,6 +70,19 @@
                                         </div>
 
                                     </td>
+                                    <?php if(isAdmin()){ ?>
+                                        <td>
+                                            <?php if($p['status'] == '1'){ ?>
+                                                <span class="font-weight-bolder text-success">
+                                                    Accepted
+                                                </span>
+                                            <?php  }else{ ?>
+                                                <a href="panel_software_accept.php?id=<?php echo $p['id']; ?>" class="btn btn-outline-success">Accept</a>
+
+                                            <?php } ?>
+
+                                        </td>
+                                    <?php } ?>
                                     <td><?php echo date("d / m / Y",strtotime($p['created_at']));?></td>
                                 </tr>
                             <?php } ?>

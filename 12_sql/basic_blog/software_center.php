@@ -9,7 +9,7 @@
 
             <?php
 
-            $list = getSoftware();
+            $list = getSoftware("status = '1'");
 
             foreach ($list as $s){
 
