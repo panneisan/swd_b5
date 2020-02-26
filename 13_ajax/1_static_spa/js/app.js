@@ -1,27 +1,24 @@
 
+$(".nav-link").on("click",function (e) {
+    e.preventDefault();
 
-$(document).ready(function () {
+    let to = $(this).attr("href");
+    console.log(to);
+    loadPage(to);
 
-    $(".nav-link").click(function (e) {
+});
 
-        e.preventDefault();
-        let to = $(this).attr("href");
-        console.log(to);
-        // $.ajax({
-        //
-        //     method:"GET",
-        //     url:to,
-        //     success:function (data) {
-        //         console.log(data);
-        //     }
-        //
-        //
-        // });
-        $.get(to,function (data) {
-            $(".content").html(data);
-        })
+loadPage("home.html");
 
-    });
+function loadPage(pageName){
 
+    //to show active in nav bar
+    $(".nav-link").removeClass("active");
+    $(`.nav-link[href='${pageName}']`).addClass("active");
 
-})
+    //load page with ajax
+    $.get(pageName,function (data) {
+        $(".content").html(data);
+    })
+
+}

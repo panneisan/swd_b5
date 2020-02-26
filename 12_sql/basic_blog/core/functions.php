@@ -185,6 +185,25 @@ function catCreate(){
 
     }
 }
+
+function catCreateApi(){
+    $catTitle = textFilter($_POST['catTitle']);
+    $catDescription = textFilter($_POST['catDescription']);
+    
+    if(empty($catTitle) || empty($catDescription)){
+
+        return showError("danger","Title နှင့် Description များပါဝင်ရန်လိုအပ်ပါသည်။ <i class='fa fa-frown-o'></i>");
+
+    }else{
+
+        $sql = "INSERT INTO categories (title,description) VALUES ('$catTitle','$catDescription')";
+
+        return runQuery($sql);
+
+            
+
+    }
+}
 function catUpdate($id){
 
     $catTitle = textFilter($_POST['catTitle']);
