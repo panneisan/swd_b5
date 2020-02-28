@@ -1383,7 +1383,15 @@
         $('#student-table').DataTable();
 
         $(".btn-maximize").click(function () {
-            $("#all-list").toggleClass('maximize');
+            // $("#all-list").toggleClass('maximize',500);
+            $("#all-list").animate({
+                position : "fixed !important",
+                width : "100%",
+                minHeight: "100vh",
+                zIndex:"1000",
+                top:0,
+                right:0
+            },500)
         });
 
         $(".right-top-dropdown").dropdown();
